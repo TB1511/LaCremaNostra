@@ -28,7 +28,7 @@
             font-family: "Cinzel", serif;
         }
         body div {
-            width: 70%;
+            width: 90%;
             /* border: 2px solid var(--font-color); */
             border-radius: 10px;
             margin-bottom: 2vh;
@@ -306,7 +306,7 @@
                 font-size: 1.25em;
             }
             .head {
-                background-image: url(pictures/main4.png);
+                background-image: url(pictures/main.jpg);
                 background-size: cover;        /* Bild füllt den Bereich */
                 background-position: center;   /* Bild wird zentriert */
                 background-repeat: no-repeat;
@@ -344,6 +344,7 @@
             }
             .controls {
                 width: 92%;
+                display: none;
             }
         }
     </style>
@@ -539,6 +540,33 @@
       closeModal();
     }
   });
+
+  let touchStartX = 0;
+let touchEndX = 0;
+
+const slidesContainer = document.getElementById("slides");
+
+slidesContainer.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+slidesContainer.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipeGesture();
+});
+
+function handleSwipeGesture() {
+  const swipeDistance = touchEndX - touchStartX;
+
+  if (Math.abs(swipeDistance) < 50) return; // ignorier kurze Wischbewegungen
+
+  if (swipeDistance > 0) {
+    prevSlide(); // Swipe nach rechts → vorheriger Slide
+  } else {
+    nextSlide(); // Swipe nach links → nächster Slide
+  }
+}
+
       </script>
       
 </body>
