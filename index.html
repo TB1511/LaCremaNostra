@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Crema Nostra - Home</title>
+    <link rel="icon" href="pictures/main.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --backround-color: rgb(27, 26, 23);
+            --font-color: rgb(231, 212, 179);
+            --accent-color: rgb(46, 44, 40);
+        }
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background-color: var(--backround-color);
+            color: var(--font-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1vh;
+            font-family: "Cinzel", serif;
+        }
+        body div {
+            width: 70%;
+            /* border: 2px solid var(--font-color); */
+            border-radius: 10px;
+            margin-bottom: 2vh;
+            padding: 1vh;
+            background-color: var(--accent-color);
+        }
+        .head {
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .head img {
+            width: 50%;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            border-radius: 10px;
+            background: var(--font-color);
+        }
+        .head div {
+            width: 50%;
+        }
+        .head h1 {
+            font-size: 4em;
+            padding: 0;
+            margin: 0;
+        }
+        .head p {
+            font-size: 2em;
+            padding: 0;
+            margin: 0;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 0;
+            margin: 0;
+        }
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .slide {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            flex-shrink: 0;
+            background-color: var(--backround-color);
+            width: 31.3%;
+            margin-left: 1%;
+            margin-right: 1%;
+            border-radius: 10px;
+            border: 2px solid transparent;
+        }
+        .slide:hover {
+            cursor: pointer;
+            border: 2px solid var(--font-color);
+        }
+        .slide p {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 0;
+            margin: 0;
+        }
+        .slide img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+            border-radius: 10px;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            background-color: transparent;
+        }
+        .control-btn {
+            background: var(--accent-color);
+            border: 2px solid var(--font-color);
+            color: var(--font-color);
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .control-btn:hover {
+            background: var(--font-color);
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        h1{
+            text-align: center;
+        }
+        p {
+            font-size: 1.5em;
+            text-align: justify;
+            text-justify: inter-word;
+            padding: 0;
+            margin: 0;
+        }
+        .services {
+            height: 60vh;
+        }
+        .services:hover {
+            cursor: pointer;
+        }
+        .services p {
+            font-size: 1.5em;
+            text-align: center;
+            text-justify: inter-word;
+            padding: 0;
+            margin: 0;
+        }
+        .service {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            padding: 0;
+            margin: 0;
+            height: 76%;
+        }
+        .service div {
+            height: 100%;
+            width: 32%;
+            padding: 0;
+            margin: 0;
+            border: 2px solid transparent;
+        }
+        .service div:hover {
+            border: 2px solid var(--font-color);
+        }
+        .service div img{
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+        }
+        .location {
+            height: 60vh;
+        }
+        .loc {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            padding: 0;
+            margin: 0;
+            height: 76%;
+        }
+        .loc div {
+            height: 100% !important;
+            width: 32%;
+            padding: 0;
+            margin: 0;
+            border: 2px solid transparent;
+        }
+        .loc div img{
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1000;
+            font-size: 1.5em;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+        .info div {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .info img {
+            width: 10%;
+            height: auto;
+            border: 2px solid transparent;
+            border-radius: 10%;
+        }
+        .info img:hover {
+            border: 2px solid var(--font-color);
+            border-radius: 10%;
+        }
+        .modal {
+            display: none; /* versteckt per Default */
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: var(--accent-color);
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 10px !important;
+        }
+
+        .modal-content p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--font-color);
+            cursor: pointer;
+        }
+
+        .modal-description {
+            font-size: 1em !important;
+            margin-top: 10px;
+            color: var(--font-color);
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.25em;
+            }
+            .head {
+                background-image: url(pictures/main4.png);
+                background-size: cover;        /* Bild füllt den Bereich */
+                background-position: center;   /* Bild wird zentriert */
+                background-repeat: no-repeat;
+                color: var(--backround-color);
+                background-color: var(--font-color);
+                height: 30vh !important;
+            }
+            .head div, .head img {
+                display: none;
+            }
+            .info p {
+                font-size: 0.75em;
+            }
+            .services, .location {
+                height: auto;
+            }
+            .service, .loc {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .service div, .loc div {
+                height: auto;
+                width: 100%;
+            }
+            .service div p, .loc div p{
+                font-size: 1em;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                height: auto;
+                width: 97%;
+            }
+            .controls {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div>
+            <h1>La Crema Nostra</h1>
+            <br>
+            <hr>
+            <br>
+            <p>Die Familie serviert kalt!</p>
+        </div>
+        <img src="pictures/main3.png">
+    </div>
+    <div class="galerie">
+        <h1>Unsere Highlights</h1>
+        <div class="slider">
+            <div class="slides" id="slides">
+              <!-- Slide-Elemente -->
+              <div class="slide"><img src="pictures/donBambini.png" alt="Eis"><p>Don Bambini Becher</p></div>
+              <div class="slide"><img src="pictures/vendetta.png" alt="Eis"><p>Erdbeer Vendetta Becher</p></div>
+              <div class="slide"><img src="pictures/capofrutta.png" alt="Eis"><p>Capo Frutta Becher</p></div>
+              <div class="slide"><img src="pictures/donCioccolato.png" alt="Eis"><p>Don Cioccolato Becher</p></div>
+              <div class="slide"><img src="pictures/donNussino.png" alt="Eis"><p>Don Nussino Becher</p></div>
+              <div class="slide"><img src="pictures/donRaffaello.png" alt="Eis"><p>Don Raffaello Becher</p></div>
+              <div class="slide"><img src="pictures/cookie.png" alt="Eis"><p>Cookies Criminella Becher</p></div>
+              <div class="slide"><img src="pictures/banana.png" alt="Eis"><p>La Banana Nostra</p></div>
+            </div>
+            <div class="controls">
+              <button class="control-btn" onclick="prevSlide()">❮</button>
+              <button class="control-btn" onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <h1>Über Uns - La Crema Nostra</h1>
+        <p>Gegründet irgendwo zwischen Palermo, Neapel und NRW 
+            die gefährlichste und gleichzeitig süßeste La Familia der Stadt.
+            Unsere Waffen?  
+            Drei Kugeln Eis und ein Schuss Sahne – direkt in dein Herz.
+            Organisierte Geschmacksexplosion seit Tag 1.
+            
+            Wenn Geschmack illegal wär,  
+            wären wir lebenslänglich auf Alcatraz.
+            
+            Und wenn wir in deinem Viertel auftauchen – such Don Gelato. 
+            Sonst sucht Don Gelato dich.
+            
+            Er redet nicht viel.  
+            Sein Eis schon. Und wie!
+            
+            Du brauchst Schutz von der Familie?  
+            Oder einfach nur ein cooles Auftreten auf deinem Event?  
+            Dann buch uns – für Hochzeiten, Kindergeburtstage oder jeden Anlass, bei dem Geschmack regieren soll.
+            
+            Wir sind die einzige Mafia,  
+            bei der auch alle Kinder Mitglied werden wollen.
+            
+            La Crema Nostra - Wir sind die Familie vor der dich deine Diät gewarnt hat. Erfahre hier mehr:</p>
+            <div>
+                <img onclick="window.location.href='https://www.tiktok.com/discover?lang=de-DE'" src="pictures/tiktokIcon.png">
+                <img onclick="window.location.href='https://www.youtube.com/'" src="pictures/youtubeIcon.png">
+                <img onclick="window.location.href='https://www.instagram.com/'" src="pictures/instaIcon.png">
+            </div>
+    </div>
+    <div class="services" onclick="window.location.href='file:///C:/Users/Tarek/Desktop/Projekte/Eisdiele/termin.html'">
+        <h1>Buche Uns!</h1>
+        <div class="service">
+            <div>
+                <img src="pictures/hochzeit.jpg">
+                <p>Für Hochzeiten</p>
+            </div>
+            <div>
+                <img src="pictures/gebi.jpg">
+                <p>Für Geburtstage</p>
+            </div>
+            <div>
+                <img src="pictures/pistol.png">
+                <p>Und allen anderen Events</p>
+            </div>
+        </div>
+    </div>
+    <div class="location">
+        <h1>Hier findest du uns!</h1>
+        <div class="loc">
+            <div>
+                <img src="pictures/phoenix.png">
+                <p>Phoenix See</p>
+            </div>
+            <div>
+                <img src="pictures/park.png">
+                <p>Westpark</p>
+            </div>
+            <div>
+                <img src="pictures/dortmund.png">
+                <p>Rund um Dortmund</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <img id="modal-img" src="" alt="Popup Bild">
+          <p id="modal-text"></p>
+          <p id="modal-description" class="modal-description"></p>
+        </div>
+    </div>
+      
+    <script>
+        const slidesContainer = document.getElementById("slides");
+        const slideElements = document.querySelectorAll(".slide");
+        const slideCount = slideElements.length;
+        const visibleSlides = 3;
+        let currentIndex = 0;
+      
+        // Cloning slides to simulate infinite scroll
+        for (let i = 0; i < visibleSlides; i++) {
+          const clone = slideElements[i].cloneNode(true);
+          slidesContainer.appendChild(clone);
+        }
+      
+        function updateSlider() {
+          const slideWidth = slideElements[0].offsetWidth + 2 * parseFloat(getComputedStyle(slideElements[0]).marginLeft);
+          slidesContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+      
+        function nextSlide() {
+          currentIndex++;
+          updateSlider();
+      
+          if (currentIndex > slideCount) {
+            setTimeout(() => {
+              slidesContainer.style.transition = "none";
+              currentIndex = 1;
+              updateSlider();
+              slidesContainer.offsetHeight; // force reflow
+              slidesContainer.style.transition = "transform 0.5s ease";
+            }, 500);
+          }
+        }
+      
+        function prevSlide() {
+          if (currentIndex === 0) {
+            slidesContainer.style.transition = "none";
+            currentIndex = slideCount;
+            updateSlider();
+            slidesContainer.offsetHeight; // force reflow
+            slidesContainer.style.transition = "transform 0.5s ease";
+          }
+          currentIndex--;
+          updateSlider();
+        }
+      
+        setInterval(nextSlide, 5000);
+
+        const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  const modalText = document.getElementById("modal-text");
+  const modalDesc = document.getElementById("modal-description");
+
+  // Beschreibungstexte je Slide-Titel (muss zu .slide p Text passen)
+  const slideDescriptions = {
+    "Don Bambini Becher": "Schon die Kleinsten in der Familie genießen eiskalt <br> Inhalt: 3 Kugeln nach Wahl, getoppt durch bunte oder Schokostreusel in der Waffel ",
+    "Erdbeer Vendetta Becher": "Eine Sache der Ehre. Zart aber tödlich lecker <br> Inhalt: 2x Erdbeer, Vanille, Schlagsahne, Erdbeersauce, frische Erdbeeren",
+    "Capo Frutta Becher": "Früchte unter Kontrolle der Familie <br>Inhalt: Zitrone, Erdbeer, Vanille, Schlagsahne, frische Früchte (Kiwi, Ananas, Erdbeer)",
+    "Don Cioccolato Becher": "Die dunkle Seite der Familie<br>Inhalt: 2× Schoko, Stracciatella, Schlagsahne, Schokosauce, Streusel, weiße Schokolade",
+    "Don Nussino Becher": "Harte Schale, weicher Geschmack<br>Inhalt: 2× Haselnuss, Vanille, Schlagsahne, Nusssauce, geriebene Mandeln, Giotto",
+    "Don Raffaello Becher": "Süß und absolut vertrauenswürdig<br>Inhalt: 2× Kokos, Vanille, Schlagsahne, geraspelter Kokos, Raffaello",
+    "Cookies Criminella Becher": "Knusprig, gefährlich – aber ganz legal lecker<br>Inhalt: Stracciatella, Vanille, Cookie, Schlagsahne, Cookie-Stücke, Schokosauce",
+    "La Banana Nostra": "Bananen <br>Inhalt: Vanille, Schoko, Erdbeer, Schlagsahne, frische Banane",
+  };
+
+  // Klick-Handler für alle Slides
+  document.querySelectorAll(".slide").forEach(slide => {
+    slide.addEventListener("click", () => {
+      const imgSrc = slide.querySelector("img").src;
+      const title = slide.querySelector("p").textContent;
+
+      modalImg.src = imgSrc;
+      modalText.textContent = title;
+      modalDesc.innerHTML = slideDescriptions[title] || "Keine Beschreibung vorhanden.";
+      modal.style.display = "block";
+    });
+  });
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+      </script>
+      
+</body>
+</html>
